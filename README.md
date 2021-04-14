@@ -29,9 +29,13 @@ Both ways behave almost identical exept some commands will only work if the load
 In the wild at least 3 different bootloaders have been seen.
 
 v1.1  : - can be replaced by any usr loader
+
         - iap cmd support 
+        
 v2.31 : - use a different cmd set
+
         - a alternate hw contition by pulling p1.5 low (if enabled)
+
         - not replaceable by usr
         - no IAP cmd support (exept on CH559)
 v2.40 : - same cmd set as v2.31
