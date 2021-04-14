@@ -1,0 +1,10 @@
+*.bin
+*.hex
+*.o
+*.d
+.*.swp
+*~
+*.bak
+*.exe
+*.elf
+
