@@ -28,25 +28,24 @@ Both ways behave almost identical exept some commands will only work if the load
 
 In the wild at least 3 different bootloaders have been seen.
 
-v1.1  : - can be replaced by any usr loader
-
-        - iap cmd support 
-        
-v2.31 : - use a different cmd set
-
-        - a alternate hw contition by pulling p1.5 low (if enabled)
-
-        - not replaceable by usr
-        - no IAP cmd support (exept on CH559)
-v2.40 : - same cmd set as v2.31
-        - much more secure than the others
+v1.1: 
+ - can be replaced by any usr loader
+ - iap cmd support 
+v2.31: 
+ - use a different cmd set
+ - a alternate hw contition by pulling p1.5 low (if enabled)
+ - not replaceable by usr
+ - no IAP cmd support (exept on CH559)
+v2.40: 
+  - same cmd set as v2.31
+  - much more secure than the others
 
 common to all three loaders is support for program download by USB and UART. Exept for v2.40 all these loaders are not secure. The programcode can easily be read back by a simple application. WCH provides a app called WCHIspTool for Win to flash a Intel Hex file by USB or serial.
 
 ## WCHIspTool:
 WCH offers a tool for flashing a firmware to the chips. This tool is also used setup some config options. Saving config options on the chip works only when the bootloader is activated with the hw contition.
 
-The tool seems to have problems when loading Intel Hex files with missing <cr><lf> so be carefull with hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
+The tool seems to have problems when loading Intel Hex files with missing cr/lf so be carefull with hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
 
 # Device Header:
 WCH provides device header files for Keil which can be used, but these
