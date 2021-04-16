@@ -24,7 +24,7 @@ The chips contain a bootloader for flashing the firmware. This bootloader can be
  1. by power on reset (when DP+ is pulled high by 10k during power on)
  2. by LJMP 0x3800
 
-Both ways behave almost identical exept some commands will only work if the loader is called by harware contition. In fact it looks like at power on the CPU jumps to 0x3800 rather than to 0x0000.
+Both ways behave almost identical exept some commands will only work if the loader is called by hardware contition. In fact it looks like at power on the CPU jumps to 0x3800 rather than to 0x0000.
 
 In the wild at least 3 different bootloaders have been seen.
 
@@ -33,7 +33,7 @@ v1.1:
  - iap cmd support 
 
 v2.31: 
- - use a different cmd set
+ - uses a different cmd set
  - a alternate hw contition by pulling p1.5 low (if enabled)
  - not replaceable by usr
  - no IAP cmd support (exept on CH559)
@@ -49,8 +49,8 @@ WCH offers a tool for flashing a firmware to the chips. This tool is also used s
 
 The tool seems to have problems when loading Intel Hex files with missing cr/lf so be carefull with hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
 
-# Device Header:
+## Device Header:
 WCH provides device header files for Keil which can be used, but these
 files are Keil only. Beside there are lots of extra declarations which should not be part of the device header there are some subtile problems when used on lsb compilers like IAR or SDCC. For example all int/uint  references to xdata should be reviewed. WCH implicitly asumes msb order which is ok for Keil. 
 
-The new header files provided here can be used with Keil,IAR and SDCC. Other compilers can be used by extending compiler.h.
+The new header files provided here can be used with Keil, IAR and SDCC. Other compilers may be used by extending compiler.h.
