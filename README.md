@@ -1,12 +1,13 @@
 # Preface
-This is a add on to the datasheet of the Ch551-CH554 unfolding some facts which are missing in the datasheets. Basically the CH55x are fast MCS51 controllers with buildin extra features like USB or SPI. So far nothing special and many other companies have that too but, but these things are really cheap (less than 0.2 USD @LSC). 
+This is a add on to the datasheet of the Ch551-CH554 unfolding some facts which are missing in the datasheets. Basically the CH55x are fast MCS51 controllers with buildin extra features like USB or SPI. So far nothing special and many other companies have that too but, but these things are really cheap (less than 0.3 USD @LSC). 
 The only disadvantage is that all documents are in Chinese only available. It seems WCH targets only the chinese markets which makes it difficult to find realable informations. 
-Here its all about the CH552 but most applies for CH551 and CH554 too. In fact al of these chips uses the same die. {link} 
-So its save in most cases to use the datasheet for the CH554 for the other MCUs too.
+Here its all about the CH552 but most applies for CH551 and CH554 too. In fact al of these chips uses the same die. 
+       https://www.richis-lab.de/CH55x.htm 
+So its save in most cases to use the datasheet for the CH554 for the other MCUs too. The CH553 mentioned in the CH554 datasheet seems not to exist.
 
 ## Clocks:
-The max clock speed is offically 24 MHz derived from some PLL. There is no need for a crystal. The 32MHz setting is offically forbitten but works too, exept for USB because the 48MHz USB clock cannot be reached.
-The execution speed is 8..10 times higher than a normal 12 Clocker, which means efectively the CH552 is a 1.3 Clocker. The chips boot up at fsys=6MHz.
+The max clock speed is 24 MHz derived from some PLL. There is no need for a crystal. The 32MHz setting is offically forbitten but works too, exept for USB because the 48MHz USB clock cannot be reached.
+The execution speed is 8..10 times higher than a normal 12 Clocker, which means efectively the CH552 is a 1.3 Clocker. The chip does boot up at fsys=6MHz.
 Timers can work at fsys/12 fsys/4 and fsys/1, all usual bautrates can be met up 115k2 @ 24MHz even when derived from T1. 
 
 ## Ports:
@@ -25,7 +26,7 @@ The chips contain a bootloader for flashing the firmware. This bootloader can be
  2. by LJMP 0x3800
 
 Both ways behave almost identical exept some commands will only work if the loader is called by hardware contition. In fact it looks like at power on the CPU jumps to 0x3800 rather than to 0x0000.
-
+On new chips with no firmware at 0x000 the the bootloader starts automaically without any user action.
 In the wild at least 3 different bootloaders have been seen.
 
 v1.1: 
