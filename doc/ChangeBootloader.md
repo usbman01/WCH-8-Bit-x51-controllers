@@ -4,8 +4,9 @@ The bootloader is writeprotected, this is part of the device security and theref
 
 The easy way would be to use a external SPI programer but thats impossible because WCH does not provide any infos about the protocol. 
 
-#Concept:
-from the datasheet: 
+Concept:
+
+From the datasheet: 
 
 1. Config Register 
 There is a 16 bit config register storing some bootup options. This isn't very well documented, but some of that options are accessable by the WCH tool. These options are stored within the bootloader space which means at some point during bootup the loader space isn't writeprotected at all. (Table 6.2 flash-ROM configuration information description)
