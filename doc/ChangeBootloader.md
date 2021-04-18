@@ -1,4 +1,5 @@
-##Replacing the bootloader:
+Replacing the bootloader:
+
 The bootloader is writeprotected, this is part of the device security and therefore there is no easy way to replace the loader. In fact it seems impossible to do that for v2.31 or v2.40.
 
 The easy way would be to use a external SPI programer but thats impossible because WCH does not provide any infos about the protocol. 
@@ -20,13 +21,14 @@ The v1.1 bootloader has support for IAP. IAP is able to start a previous flashed
 
 Warning: If you do something wrong the chip gets bricked. Its a good idea to have second loader in flash at 0x3000 which can be called in main. Maybe additional checks and some crc is also usefull. Allways use 5V Vcc when flashing.
 
-#IAP cmd:
-Two commands will be used 0xBA to prepare IAP and 0xA5 to run it:
-0xBA <len> <0x57> <0xA8> <adrlo> <adrHi>  
-0xBA  0x04  0x57  0xA8  0x00  0x00  
+IAP cmd:
 
-0xA5 <len> <run> 0x00 
-0xA5  0x02 <0x01> <0x00>
+Two commands will be used 0xBA to prepare IAP and 0xA5 to run it:
+- 0xBA <len> <0x57> <0xA8> <adrlo> <adrHi>  
+- 0xBA  0x04  0x57  0xA8  0x00  0x00  
+
+- 0xA5 <len> <run> 0x00 
+- 0xA5  0x02 <0x01> <0x00>
  
 0xBA stores the IAP marker and the startaddress (0x0000 in this case).
 0xA5 starts the the prog
