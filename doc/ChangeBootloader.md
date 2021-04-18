@@ -20,7 +20,7 @@ SW Reset.
 
 The v1.1 bootloader has support for IAP. IAP is able to start a previous flashed program from loader mode at any address. That user prog will be executed with bBOOT_LOAD = 1 and with fSys=12MHz instead the normal 6MHz. Just write a software which can flash a loader image to 0x3800.. 0x3FEF. When done and verify succeeds just clear the IAP Marker to release IAP.
 
-Warning: If you do something wrong the chip gets bricked. Its a good idea to have second loader in flash at 0x3000 which can be called in main. Maybe additional checks and some crc is also usefull. Allways use 5V Vcc when flashing.
+Warning: If you do something wrong the chip gets bricked. Its a good idea to have second loader in flash at 0x3000 which can be called in main as a emergency. Maybe additional checks and some crc is also usefull. Allways use 5V Vcc when flashing.
 
 IAP cmd:
 
@@ -29,5 +29,9 @@ Two commands will be used 0xBA to prepare IAP and 0xA5 to run it:
 - 0xA5  0x02  0x01  0x00 
  
 0xBA stores the IAP marker and the startaddress (0x0000 in this case).
-0xA5 starts the the prog
+0xA5 starts the the prog.
+
+Since IAP is only available at v1.1 the above wont work on other loaders. 
+
+Maybe Pin Reset can be used to exit the bootloader without clearing the bBOOT_LOAD bit. Then changing the loader would be much more easy.and it would work with any loader. I havent checked that out yet. 
 
