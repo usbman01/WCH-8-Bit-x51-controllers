@@ -8,7 +8,7 @@ Concept:
 
 From the datasheet: 
 
-1. Config Register 
+1. Config Register: 
 There is a 16 bit config register storing some bootup options. This isn't very well documented, but some of that options are accessable by the WCH tool. These options are stored within the bootloader space which means at some point during bootup the loader space isn't writeprotected at all. (Table 6.2 flash-ROM configuration information description)
 Bit15 and Bit14 can't be accessed by the WCH Tool but Bit13 and Bit12 are available. So there is a way to access these bits in loader mode.
 
@@ -24,7 +24,7 @@ Warning: If you do something wrong the chip gets bricked. Its a good idea to hav
 
 IAP cmd:
 
-Two commands will be used 0xBA to prepare IAP and 0xA5 to run it:
+Two commands will be used: 0xBA to prepare IAP and 0xA5 to run it:
 - 0xBA  0x04  0x57  0xA8  0x00  0x00  
 - 0xA5  0x02  0x01  0x00 
  
