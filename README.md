@@ -47,7 +47,7 @@ v2.40:
 Common to all three loaders is support for program download by USB and UART. Exept for v2.40 all these loaders are not secure. The programcode can easily be read back by a simple application. WCH provides a app called WCHIspTool for Win to flash a Intel Hex file by USB or serial.
 
 ## WCHIspTool:
-WCH offers a tool for flashing a firmware to the chips. This tool is also used setup some config options. Saving config options on the chip works only when the bootloader is activated with the hw contition.
+WCH offers a tool for flashing a firmware to the chips. This tool is also used to setup some config options. Saving config options on the chip works only when the bootloader is activated with the hw contition.
 
 The tool seems to have problems when loading Intel Hex files with missing cr/lf so be carefull with hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
 
