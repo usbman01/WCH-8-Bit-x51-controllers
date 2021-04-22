@@ -1,12 +1,8 @@
-/*--------------------------------------------------------------------------
-Header file for CH552 microcontrollers.
-****************************************
-**  Copyright  (C)  W.ch  1999-2016   **
-**  Web:              http://wch.cn   **
-****************************************
-removed all the typedefs, usb section and C++  
-all names and consts are still the same
---------------------------------------------------------------------------*/
+/*
+  removed all the typedefs, usb section and C++  
+  all names and consts are still the same
+*/
+
 #ifndef CH552_H_
 
 #include "compiler.h"
