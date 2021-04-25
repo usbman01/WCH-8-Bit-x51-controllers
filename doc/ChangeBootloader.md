@@ -30,5 +30,7 @@ Two commands will be used: 0xBA to prepare IAP and 0xA5 to run it:
 
 Since IAP is only available at v1.1 the above wont work on other loaders. 
 
-~~Maybe Pin Reset can be used to exit the bootloader without clearing the bBOOT_LOAD bit. Then changing the loader would be much more easy and it would work with any loader. I havent checked that out yet.~~ 
+There is a second way to do a loaderchange by disableing the bootloader in the config register but this also works just for v1.1 only and is even more dangerous. So there is no advantage to use that way. 
+
+~~Maybe Pin Reset can be used to exit the bootloader without clearing the bBOOT_LOAD bit. Then changing the loader would be much more easy and it would work with any loader. I have not checked that out yet.~~ 
 
