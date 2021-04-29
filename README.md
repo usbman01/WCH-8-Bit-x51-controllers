@@ -6,6 +6,9 @@ Here its all about the CH552 but most applies for CH551 and CH554 too. In fact a
        https://www.richis-lab.de/CH55x.htm 
 
 So its save in most cases to use the datasheet for the CH554 for the other MCUs too. The CH553 mentioned in the CH554 datasheet seems not to exist.
+There is a English datasheet for the CH554 available from Blinkinlabs:
+
+  https://github.com/Blinkinlabs/ch554_sdcc/tree/master/documentation
 
 ## Clocks:
 The max clock speed is 24 MHz derived from some PLL. There is no need for a crystal. The 32MHz setting is offically forbitten but works too, exept for USB because the 48MHz USB clock cannot be reached.
@@ -59,5 +62,5 @@ The new header files provided here can be used with Keil, IAR and SDCC. Other co
 
 ## Abnomalities:
 1. when executing MOVC A,@A+DPTR and A+DPTR is >= 0x4000 the core resets itself, all usbcomunication stops.
-2. after a usbfirmare stalls a setup request because it is unknown, the next valid setup request gets stalled too. This happens in the bootloader and in all WCH examples. The fix for this is easy. Insert a UEP0_CTRL &= 0xF2; right after case SETUP:
-3. none of the USB examples passes the Chapter9 requests of USB2CV which checks the conformance to the spec.
+2. After a usbfirmare stalls a invalid setup request, the next valid setup request gets stalled too. This happens in the bootloader and in all WCH examples. The fix for this is easy. Insert a UEP0_CTRL &= 0xF2; right after case SETUP:
+3. None of the USB examples passes the Chapter9 requests of USB2CV which checks the conformance to the spec.
