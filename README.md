@@ -30,7 +30,7 @@ The chips contain a bootloader for flashing the firmware. This bootloader can be
  1. by power on reset (when DP+ is pulled high by 10k during power on)
  2. by LJMP 0x3800
 
-Both ways behave almost identical exept some commands will only work if the loader is called by hardware contition. In fact it looks like at power on the CPU jumps to 0x3800 rather than to 0x0000.
+Both ways behave almost identical exept some commands will only work if the loader is called by hardware contition. In fact it looks like at power on the CPU jumps to 0x3800 rather than to 0x0000 when the Bootloader is activated.
 On new chips with no firmware at 0x0000 the the bootloader starts automaically without any user action. In the wild at least 3 different bootloaders have been seen.
 
 v1.1: 
