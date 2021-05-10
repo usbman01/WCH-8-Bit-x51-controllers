@@ -187,7 +187,7 @@ SFR_(ROM_DATA_LH,0x85);       // ReadOnly: data high byte of low word for flash-
 SFR16_(ROM_DATA_HI,0x8E);     // ReadOnly: high word data (16 bits) for flash-ROM reading, little-endian
 SFR_(ROM_DATA_HL,0x8E);       // ReadOnly: data low byte of high word for flash-ROM reading
 SFR_(ROM_DATA_HH,0x8F);       // ReadOnly: data high byte of high word for flash-ROM reading
-SFR_(ROM_DAT_BUF;0x8E);       // data byte buffer for flash-ROM program and erasing
+SFR_(ROM_DAT_BUF,0x8E);       // data byte buffer for flash-ROM program and erasing
 SFR_(ROM_BUF_MOD,0x8F);       // data buffer mode and end address for flash-ROM program and erasing
   #define bROM_BUF_BYTE  0x80 // flash-ROM data buffer mode: 0=data block (1~64bytes) to program from xRAM pointed by DPTR, 1=only one byte for program or erasing from SFR ROM_DAT_BUF
   #define MASK_ROM_ADDR  0x3F // bit mask for end address for flash-ROM block program if bROM_BUF_BYTE=0
