@@ -16,7 +16,7 @@ The execution speed is 8..10 times higher than a normal 12 Clocker, which means 
 Timers can work at fsys/12 fsys/4 and fsys/1, all usual bautrates can be met up 115k2 @ 24MHz even when derived from T1. 
 
 ## Ports:
-Ports differ from the original ones, they also can be configured as PUSH/PULL and OC besides the normal x51 mode.
+Ports differ from the original ones, they also can be configured as PUSH/PULL and OC besides the normal x51 mode. Some ports can be maped to alternate pins
 
 ## USB:
 The USB Core supports max 8 endpoints (4 In / 4 Out) besides the control endpoint. The core supports FS (fullspeed 12Mbit) as well as LS (low speed 1.5Mbit). The CH554 supports USB hostmode too.
@@ -52,13 +52,13 @@ Common to all three loaders is support for program download by USB and UART. Exe
 ## WCHIspTool:
 WCH offers a tool for flashing a firmware to the chips. This tool is also used to setup some config options. Saving config options on the chip works only when the bootloader is activated with the hw contition.
 
-The tool seems to have problems when loading Intel Hex files with missing cr/lf so be carefull with hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
+The tool seems to have problems when loading Intel Hex files with missing cr/lf so be carefull with intel hexfiles from Linux. Gaps in the hexfile will be filled with 0x00 instead the usual 0xFF. This may become a problem on other controllers where pages need to be erased. Intel Hexfiles not starting at 0x0000 can't be processed because the way secutity is implemented. These problems can be solved by using some hex processing tools. The IAP option seems not to work correctly. 
 
 ## Device Header:
 WCH provides device header files for Keil which can be used, but these
 files are Keil only. Beside there are lots of extra declarations which should not be part of the device header there are some subtile problems when used on lsb compilers like IAR or SDCC. For example all int/uint  references to xdata should be reviewed. WCH implicitely asumes msb order which is ok for Keil. 
 
-The new header files provided here can be used with Keil, IAR and SDCC. Other compilers may be used by extending compiler.h.
+Another problem may arise if in Keil the highest optimise level is used. Since some SFRs are not using sfr but #define the compiler may optimise the access to this sfrs and therefor the result may be wrong.
 
 ## Abnomalities:
 1. when executing MOVC A,@A+DPTR and A+DPTR is >= 0x4000 the core resets itself, all usbcomunication stops.
