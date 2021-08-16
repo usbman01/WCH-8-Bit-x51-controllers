@@ -58,11 +58,10 @@
   #define PDATA  __pdata
   #define CODE   __code
   #define BDATA  __bdata
-  #define BIT    __bit
-  #define MAKE16(adr_) (((adr_+1) << 8)+adr_) //helper 
+  #define BIT    __bi
   #define SFR_(name_,adr_)       __sfr  __at (adr_) name_
   #define SBIT_(name_,adr_,pos_) __sbit __at (adr_+pos_) name_
-  #define SFR16_(name_,adr_)     __sfr16 __at (MAKE16(adr_)) name_
+  #define SFR16_(name_,addr_)    __sfr16 __at(((addr_+1U)<<8) | addr_) name_
   #define NOP()  __asm__ ("nop")
 #endif
 
