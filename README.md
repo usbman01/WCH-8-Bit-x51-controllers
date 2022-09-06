@@ -65,6 +65,6 @@ Another problem may arise if in Keil the highest optimise level is used. Since o
 2. After a usbfirmare stalls a invalid setup request, the next valid setup request gets stalled too. This happens in the bootloader and in all WCH examples. The fix for this is easy. Insert a UEP0_CTRL &= 0xF2; right after case SETUP:
 3. None of the USB examples passes the Chapter9 requests of USB2CV which checks the conformance to the spec.
 4. The cpu code does not support IDLE (IDL bit in PCON), therfore there is no idle mode available
-5. Setting the spi clock dividor to 1 stops the SPI fuction.
+5. Setting the spi clock dividrr to 1 stops the SPI fuction.
 6. The CH552 can operate at 32 MHz too but no USB at that feqency (clock pll divider set to 0.75 e.g. 7)
 
